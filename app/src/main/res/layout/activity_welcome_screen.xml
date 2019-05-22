@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mine">
+
+    <TextView
+        android:id="@+id/labelWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome!"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:id="@+id/labelWelcome2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What would you like to explore?"
+        android:layout_marginTop="75dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="15sp"
+        />
+
+    <Button style="@style/Widget.AppCompat.Button"
+        android:id="@+id/mode1"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="What is new?"
+        android:layout_marginTop="130dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/buttonshape"
+        />
+
+    <Button style="@style/Widget.AppCompat.Button"
+        android:id="@+id/mode2"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Find something!"
+        android:layout_below="@+id/mode1"
+        android:layout_marginTop="-5dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/buttonshape2"
+        />
+
+    <Button style="@style/Widget.AppCompat.Button"
+        android:id="@+id/mode3"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Search by domain"
+        android:layout_below="@+id/mode2"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/buttonshape"
+        />
+
+    <Button style="@style/Widget.AppCompat.Button"
+        android:id="@+id/settingButton"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Setting"
+        android:layout_below="@+id/mode3"
+        android:layout_margin="20dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/buttonshape2"
+        />
+
+    <TextView
+        android:id="@+id/labelCreated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This APP was created by Pavel Švarc in cooperation with UHK"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="10sp"
+
+        />
+
+</RelativeLayout>

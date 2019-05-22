@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string-array name="countryListArray">
+            <item>auto-selected</item>
+            <item>US</item>
+            <item>GB</item>
+            <item>DE</item>
+            <item>FR</item>
+            <item>CZ</item>
+        </string-array>
+        <string-array name="countryListValues">
+            <item>1</item>
+            <item>2</item>
+            <item>3</item>
+            <item>4</item>
+            <item>5</item>
+            <item>6</item>
+        </string-array>
+
+        <string-array name="categoryListArray">
+            <item>all</item>
+            <item>business</item>
+            <item>entertainment</item>
+            <item>general</item>
+            <item>health</item>
+            <item>science</item>
+            <item>sports</item>
+            <item>technology</item>
+        </string-array>
+        <string-array name="categoryListValues">
+            <item>1</item>
+            <item>2</item>
+            <item>3</item>
+            <item>4</item>
+            <item>5</item>
+            <item>6</item>
+            <item>7</item>
+            <item>8</item>
+        </string-array>
+
+        <string-array name="languageListArray">
+            <item>auto-selected</item>
+            <item>EN</item>
+            <item>DE</item>
+            <item>ES</item>
+            <item>FR</item>
+        </string-array>
+        <string-array name="languageListValues">
+            <item>1</item>
+            <item>2</item>
+            <item>3</item>
+            <item>4</item>
+        </string-array>
+
+        <string-array name="sortByListArray">
+            <item>Relevancy</item>
+            <item>Popularity</item>
+            <item>Published at</item>
+        </string-array>
+        <string-array name="sortByListValues">
+            <item>1</item>
+            <item>2</item>
+            <item>3</item>
+        </string-array>
+
+        <string-array name="streamsListArray">
+            <item>BBC</item>
+            <item>Tech Runch</item>
+            <item>Engadgett</item>
+        </string-array>
+        <string-array name="streamsListValue">
+            <item>bbc.co.uk</item>
+            <item>techcrunch.com</item>
+            <item>engadget.com</item>
+        </string-array>
+
+</resources>

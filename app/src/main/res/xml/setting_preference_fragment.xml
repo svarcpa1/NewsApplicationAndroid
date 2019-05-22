@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="What is new mode setup">
+
+        <ListPreference
+            android:title="Select country of news"
+            android:key="@string/countryListPref"
+            android:defaultValue="1"
+            android:entries="@array/countryListArray"
+            android:entryValues="@array/countryListValues"
+            android:summary="Select preferred country of news"/>
+
+        <ListPreference
+            android:title="Select category of news"
+            android:key="@string/categoryListPref"
+            android:defaultValue="1"
+            android:entries="@array/categoryListArray"
+            android:entryValues="@array/categoryListValues"
+            android:summary="Select preferred category of news"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Find something mode setup">
+
+        <ListPreference
+            android:title="Select language of news"
+            android:key="@string/languageListPref"
+            android:defaultValue="1"
+            android:entries="@array/languageListArray"
+            android:summary="Select preferred language"/>
+
+        <ListPreference
+            android:title="Sort by"
+            android:key="@string/sortByListPref"
+            android:defaultValue="1"
+            android:entries="@array/sortByListArray"
+            android:entryValues="@array/sortByListValues"
+            android:summary="Select sorting of articles"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Domain search mode setup">
+
+        <EditTextPreference
+            android:title="Domains"
+            android:contentDescription="Add coma separated domains"
+            android:key="@string/domains_text"
+            android:summary="Type a comma separated domains in format like: [abc.com, def.eu]"
+            android:defaultValue=" ">
+
+        </EditTextPreference>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

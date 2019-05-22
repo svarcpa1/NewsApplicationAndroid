@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">News Application</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="countryListPref">countryListPref</string>
+    <string name="categoryListPref">categoryListPref</string>
+    <string name="languageListPref">languageListPref</string>
+    <string name="nightModeCHB">nightModeCHB</string>
+    <string name="sortByListPref">sortByListPref</string>
+    <string name="streamsListPref">streamsListPref</string>
+    <string name="domains_text">domains_text</string>
+</resources>
