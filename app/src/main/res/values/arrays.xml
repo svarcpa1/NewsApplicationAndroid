@@ -62,16 +62,4 @@
             <item>2</item>
             <item>3</item>
         </string-array>
-
-        <string-array name="streamsListArray">
-            <item>BBC</item>
-            <item>Tech Runch</item>
-            <item>Engadgett</item>
-        </string-array>
-        <string-array name="streamsListValue">
-            <item>bbc.co.uk</item>
-            <item>techcrunch.com</item>
-            <item>engadget.com</item>
-        </string-array>
-
 </resources>

@@ -31,6 +31,7 @@
             android:key="@string/languageListPref"
             android:defaultValue="1"
             android:entries="@array/languageListArray"
+            android:entryValues="@array/languageListValues"
             android:summary="Select preferred language"/>
 
         <ListPreference

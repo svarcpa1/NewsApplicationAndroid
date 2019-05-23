@@ -51,9 +51,6 @@ public class FindSomethingActivity extends AppCompatActivity implements
         swipeRefreshLayout.setOnRefreshListener(this);
         swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
 
-        //TODO cache
-        Paper.init(this);
-
         recyclerView = findViewById(R.id.recyclerView1);
         layoutManager = new LinearLayoutManager(FindSomethingActivity.this);
 
