@@ -30,16 +30,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class FindDomainActivity extends AppCompatActivity implements
-        SwipeRefreshLayout.OnRefreshListener{
+        SwipeRefreshLayout.OnRefreshListener {
 
     public static final String API_KEY = "f452f55f5b324b488263282b0d192e5e";
     private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
     private List<Article> articles = new ArrayList<>();
     private Adapter adapter;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private String searchedDomain="";
-    private SharedPreferences mSharedPreferences;
+    private String searchedDomain = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +49,7 @@ public class FindDomainActivity extends AppCompatActivity implements
         swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
 
         recyclerView = findViewById(R.id.recyclerView1);
-        layoutManager = new LinearLayoutManager(FindDomainActivity.this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(FindDomainActivity.this);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -66,23 +64,23 @@ public class FindDomainActivity extends AppCompatActivity implements
 
         String country = Utils.getCountry();
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String selectedDomains = mSharedPreferences.getString(getString(R.string.domains_text),
                 "");
 
         Call<News> call;
 
         //if typed text into search box
-        if (searchedWord.length()!=0){
+        if (searchedWord.length() != 0) {
             call = apiInterf.getNewsDomainCall(searchedDomain, API_KEY);
-        }else {
-            if("".equals(selectedDomains)){
+        } else {
+            if ("".equals(selectedDomains)) {
                 call = apiInterf.getNewsCall(country, API_KEY);
-                Toast.makeText(FindDomainActivity.this,"No domain found",
+                Toast.makeText(FindDomainActivity.this, "No domain found",
                         Toast.LENGTH_SHORT).show();
-            }else{
+            } else {
                 call = apiInterf.getNewsDomainCall(selectedDomains, API_KEY);
-                Toast.makeText(FindDomainActivity.this,"Domains loaded from settings",
+                Toast.makeText(FindDomainActivity.this, "Domains loaded from settings",
                         Toast.LENGTH_SHORT).show();
             }
 
@@ -107,11 +105,11 @@ public class FindDomainActivity extends AppCompatActivity implements
 
                     swipeRefreshLayout.setRefreshing(false);
 
-                    Toast.makeText(FindDomainActivity.this,"Here is your result",
+                    Toast.makeText(FindDomainActivity.this, "Here is your result",
                             Toast.LENGTH_SHORT).show();
                 } else {
                     swipeRefreshLayout.setRefreshing(false);
-                    Toast.makeText(FindDomainActivity.this,"Nothing found :(",
+                    Toast.makeText(FindDomainActivity.this, "Nothing found :(",
                             Toast.LENGTH_SHORT).show();
                 }
             }
@@ -119,13 +117,13 @@ public class FindDomainActivity extends AppCompatActivity implements
             @Override
             public void onFailure(Call<News> call, Throwable t) {
                 swipeRefreshLayout.setRefreshing(false);
-                Toast.makeText(FindDomainActivity.this,"Connection failure",
+                Toast.makeText(FindDomainActivity.this, "Connection failure",
                         Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void initListener(){
+    private void initListener() {
         adapter.setOnItemClickListener(new Adapter.OnClickListener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -146,7 +144,7 @@ public class FindDomainActivity extends AppCompatActivity implements
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_find_something,menu);
+        menuInflater.inflate(R.menu.menu_find_something, menu);
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
 
         SearchView searchView = (SearchView) menu.findItem(R.id.search_bar).getActionView();
@@ -159,7 +157,7 @@ public class FindDomainActivity extends AppCompatActivity implements
             public boolean onQueryTextSubmit(String query) {
                 searchedDomain = query;
 
-                if(query.length()>2){
+                if (query.length() > 2) {
                     onLoadingSwipeRefresh(query);
                 }
                 return false;
@@ -180,7 +178,7 @@ public class FindDomainActivity extends AppCompatActivity implements
         loadJSON(searchedDomain);
     }
 
-    private void onLoadingSwipeRefresh(final String searchedWord){
+    private void onLoadingSwipeRefresh(final String searchedWord) {
         swipeRefreshLayout.post(new Runnable() {
             @Override
             public void run() {

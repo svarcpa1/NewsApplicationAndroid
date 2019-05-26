@@ -44,11 +44,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
         View view;
 
-        if(decider==1){
+        if (decider == 1) {
             view = LayoutInflater.from(context).inflate(R.layout.item_find_something, parent,
                     false);
 
-        }else{
+        } else {
             view = LayoutInflater.from(context).inflate(R.layout.item_what_is_new, parent,
                     false);
         }
@@ -69,31 +69,31 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
                 .load(model.getUrlToImage())
                 .apply(requestOptions)
                 .listener(new RequestListener<Drawable>() {
-            @Override
-            public boolean onLoadFailed(@Nullable GlideException e,
-                                        Object model,
-                                        Target<Drawable> target,
-                                        boolean isFirstResource) {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e,
+                                                Object model,
+                                                Target<Drawable> target,
+                                                boolean isFirstResource) {
 
-                if(decider==0) {
-                    holders.progressBar.setVisibility(View.GONE);
-                }
-                return false;
-            }
+                        if (decider == 0) {
+                            holders.progressBar.setVisibility(View.GONE);
+                        }
+                        return false;
+                    }
 
-            @Override
-            public boolean onResourceReady(Drawable resource,
-                                           Object model,
-                                           Target<Drawable> target,
-                                           DataSource dataSource,
-                                           boolean isFirstResource) {
+                    @Override
+                    public boolean onResourceReady(Drawable resource,
+                                                   Object model,
+                                                   Target<Drawable> target,
+                                                   DataSource dataSource,
+                                                   boolean isFirstResource) {
 
-                if(decider==0) {
-                    holders.progressBar.setVisibility(View.GONE);
-                }
-                return false;
-            }
-        })
+                        if (decider == 0) {
+                            holders.progressBar.setVisibility(View.GONE);
+                        }
+                        return false;
+                    }
+                })
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holders.imageView);
         holders.newsTitle.setText(model.getTitle());
@@ -105,15 +105,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         return articles.size();
     }
 
-    public void setOnItemClickListener(OnClickListener onItemClickListener){
+    public void setOnItemClickListener(OnClickListener onItemClickListener) {
         this.onClickListener = onItemClickListener;
     }
 
-    public interface OnClickListener{
+    public interface OnClickListener {
         void onItemClick(View view, int position);
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView newsTitle, newsContent;
         ImageView imageView;

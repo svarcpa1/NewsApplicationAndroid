@@ -25,15 +25,12 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 
 public class DetailActivity extends AppCompatActivity implements
-        AppBarLayout.OnOffsetChangedListener{
+        AppBarLayout.OnOffsetChangedListener {
 
-    private ImageView imageView;
-    private TextView title;
     private boolean hideToolbar = false;
     private LinearLayout titleAppBar;
-    private AppBarLayout appBarLayout;
-    private Toolbar toolbar;
-    private String mURL, mImg, mTitle;
+    private String mURL;
+    private String mTitle;
 
     @SuppressLint("CheckResult")
     @Override
@@ -41,7 +38,7 @@ public class DetailActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -50,16 +47,16 @@ public class DetailActivity extends AppCompatActivity implements
                 findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle("");
 
-        appBarLayout = findViewById(R.id.appbar);
+        AppBarLayout appBarLayout = findViewById(R.id.appbar);
         appBarLayout.addOnOffsetChangedListener(this);
         titleAppBar = findViewById(R.id.appbar);
-        imageView = findViewById(R.id.backdrop);
-        title = findViewById(R.id.title);
+        ImageView imageView = findViewById(R.id.backdrop);
+        TextView title = findViewById(R.id.title);
 
         //getting attributes from intent (WhatIsNewActivity)
-        Intent intent= getIntent();
+        Intent intent = getIntent();
         mURL = intent.getStringExtra("url");
-        mImg = intent.getStringExtra("img");
+        String mImg = intent.getStringExtra("img");
         mTitle = intent.getStringExtra("title");
 
         RequestOptions requestOptions = new RequestOptions();
@@ -75,7 +72,7 @@ public class DetailActivity extends AppCompatActivity implements
         initWebView(mURL);
     }
 
-    private void initWebView(String url){
+    private void initWebView(String url) {
         WebView webView = findViewById(R.id.webView);
         webView.getSettings().setLoadsImagesAutomatically(true);
         webView.setWebViewClient(new WebViewClient());
@@ -97,13 +94,13 @@ public class DetailActivity extends AppCompatActivity implements
     @Override
     public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
 
-        float percentage= (float) Math.abs(verticalOffset) /
+        float percentage = (float) Math.abs(verticalOffset) /
                 (float) appBarLayout.getTotalScrollRange();
 
-        if (percentage == 1. && hideToolbar){
+        if (percentage == 1. && hideToolbar) {
             titleAppBar.setVisibility(View.VISIBLE);
             hideToolbar = !hideToolbar;
-        } else if (percentage < 1. && hideToolbar){
+        } else if (percentage < 1. && hideToolbar) {
             titleAppBar.setVisibility(View.GONE);
             hideToolbar = !hideToolbar;
         }
@@ -119,12 +116,11 @@ public class DetailActivity extends AppCompatActivity implements
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-        if(id == R.id.view_web){
+        if (id == R.id.view_web) {
             Intent i = new Intent(Intent.ACTION_VIEW);
             i.setData(Uri.parse(mURL));
             startActivity(i);
-        }
-        else if (id == R.id.share) {
+        } else if (id == R.id.share) {
             try {
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("text/plan");
@@ -132,12 +128,10 @@ public class DetailActivity extends AppCompatActivity implements
                 String body = "Shared from Whats new APP \n" + mURL;
                 i.putExtra(Intent.EXTRA_TEXT, body);
                 startActivity(Intent.createChooser(i, "Share: "));
-            }
-            catch (Exception e){
+            } catch (Exception e) {
                 Toast.makeText(this, "Cannot be shared", Toast.LENGTH_SHORT).show();
             }
-        }
-        else if (id == R.id.settings) {
+        } else if (id == R.id.settings) {
             Intent intent = new Intent(this, SettingsActivity.class);
             this.startActivity(intent);
         }

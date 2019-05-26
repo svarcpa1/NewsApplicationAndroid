@@ -20,7 +20,6 @@ public class News {
     private List<Article> articles;
 
 
-
     public News(String status, List<Article> articles, int totalResult) {
         this.status = status;
         this.articles = articles;

@@ -18,9 +18,9 @@ public class ApiClient {
     public static final String BASE_URL = "https://newsapi.org/v2/";
     public static Retrofit retrofit;
 
-    public static Retrofit getApiClient(){
+    public static Retrofit getApiClient() {
 
-        if (retrofit==null){
+        if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .client(getUnsafeOkHttpClient().build())
@@ -38,12 +38,12 @@ public class ApiClient {
                     new X509TrustManager() {
                         @Override
                         public void checkClientTrusted(java.security.cert.X509Certificate[] chain,
-                                                       String authType) throws CertificateException{
+                                                       String authType) throws CertificateException {
                         }
 
                         @Override
                         public void checkServerTrusted(java.security.cert.X509Certificate[] chain,
-                                                       String authType) throws CertificateException{
+                                                       String authType) throws CertificateException {
                         }
 
                         @Override

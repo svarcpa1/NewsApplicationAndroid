@@ -10,8 +10,8 @@ public interface ApiInterf {
     //call without searching
     @GET("top-headlines")
     Call<News> getNewsCall(
-      @Query("country") String country,
-      @Query("apiKey") String apiKey
+            @Query("country") String country,
+            @Query("apiKey") String apiKey
 
     );
 

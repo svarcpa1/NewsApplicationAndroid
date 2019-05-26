@@ -31,16 +31,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class FindSomethingActivity extends AppCompatActivity implements
-        SwipeRefreshLayout.OnRefreshListener{
+        SwipeRefreshLayout.OnRefreshListener {
 
     public static final String API_KEY = "f452f55f5b324b488263282b0d192e5e";
     private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
     private List<Article> articles = new ArrayList<>();
     private Adapter adapter;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private String searchedWord="";
-    private SharedPreferences mSharedPreferences;
+    private String searchedWord = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +50,7 @@ public class FindSomethingActivity extends AppCompatActivity implements
         swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
 
         recyclerView = findViewById(R.id.recyclerView1);
-        layoutManager = new LinearLayoutManager(FindSomethingActivity.this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(FindSomethingActivity.this);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -65,9 +63,9 @@ public class FindSomethingActivity extends AppCompatActivity implements
         ApiInterf apiInterf = ApiClient.getApiClient().create(ApiInterf.class);
         swipeRefreshLayout.setRefreshing(true);
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String selectedLang = mSharedPreferences.getString(getString(R.string.languageListPref),"");
-        String selectedSortBy = mSharedPreferences.getString(getString(R.string.sortByListPref),"");
+        SharedPreferences mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String selectedLang = mSharedPreferences.getString(getString(R.string.languageListPref), "");
+        String selectedSortBy = mSharedPreferences.getString(getString(R.string.sortByListPref), "");
         String sortBy;
 
         String country = Utils.getCountry();
@@ -76,33 +74,33 @@ public class FindSomethingActivity extends AppCompatActivity implements
 
         Call<News> call;
 
-        if("1".equals(selectedSortBy)){
-            sortBy="relevancy";
-        } else if ("2".equals(selectedSortBy)){
-            sortBy="popularity";
-        }else {
-            sortBy="publishedAt";
+        if ("1".equals(selectedSortBy)) {
+            sortBy = "relevancy";
+        } else if ("2".equals(selectedSortBy)) {
+            sortBy = "popularity";
+        } else {
+            sortBy = "publishedAt";
         }
 
         //if typed text into search box
-        if (searchedWord.length()!=0){
-            if("1".equals(selectedLang)){
+        if (searchedWord.length() != 0) {
+            if ("1".equals(selectedLang)) {
                 call = apiInterf.getNewsSearchCall(searchedWord, from, sortBy,
                         API_KEY);
-            } else if ("2".equals(selectedLang)){
+            } else if ("2".equals(selectedLang)) {
                 call = apiInterf.getNewsSearchCallLang(searchedWord, from, "en",
                         sortBy, API_KEY);
-            } else if ("3".equals(selectedLang)){
+            } else if ("3".equals(selectedLang)) {
                 call = apiInterf.getNewsSearchCallLang(searchedWord, from, "de",
                         sortBy, API_KEY);
-            } else if ("4".equals(selectedLang)){
+            } else if ("4".equals(selectedLang)) {
                 call = apiInterf.getNewsSearchCallLang(searchedWord, from, "es",
                         sortBy, API_KEY);
             } else {
                 call = apiInterf.getNewsSearchCallLang(searchedWord, from, "fr",
                         sortBy, API_KEY);
             }
-        }else {
+        } else {
             call = apiInterf.getNewsCall(country, API_KEY);
         }
 
@@ -125,11 +123,11 @@ public class FindSomethingActivity extends AppCompatActivity implements
 
                     swipeRefreshLayout.setRefreshing(false);
 
-                    Toast.makeText(FindSomethingActivity.this,"Here is your result",
+                    Toast.makeText(FindSomethingActivity.this, "Here is your result",
                             Toast.LENGTH_SHORT).show();
                 } else {
                     swipeRefreshLayout.setRefreshing(false);
-                    Toast.makeText(FindSomethingActivity.this,"Nothing found :(",
+                    Toast.makeText(FindSomethingActivity.this, "Nothing found :(",
                             Toast.LENGTH_SHORT).show();
                 }
             }
@@ -137,13 +135,13 @@ public class FindSomethingActivity extends AppCompatActivity implements
             @Override
             public void onFailure(Call<News> call, Throwable t) {
                 swipeRefreshLayout.setRefreshing(false);
-                Toast.makeText(FindSomethingActivity.this,"Connection failure",
+                Toast.makeText(FindSomethingActivity.this, "Connection failure",
                         Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void initListener(){
+    private void initListener() {
         adapter.setOnItemClickListener(new Adapter.OnClickListener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -164,7 +162,7 @@ public class FindSomethingActivity extends AppCompatActivity implements
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_find_something,menu);
+        menuInflater.inflate(R.menu.menu_find_something, menu);
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
 
         SearchView searchView = (SearchView) menu.findItem(R.id.search_bar).getActionView();
@@ -177,7 +175,7 @@ public class FindSomethingActivity extends AppCompatActivity implements
             public boolean onQueryTextSubmit(String query) {
                 searchedWord = query;
 
-                if(query.length()>2){
+                if (query.length() > 2) {
                     onLoadingSwipeRefresh(query);
                 }
                 return false;
@@ -198,7 +196,7 @@ public class FindSomethingActivity extends AppCompatActivity implements
         loadJSON(searchedWord);
     }
 
-    private void onLoadingSwipeRefresh(final String searchedWord){
+    private void onLoadingSwipeRefresh(final String searchedWord) {
         swipeRefreshLayout.post(new Runnable() {
             @Override
             public void run() {
